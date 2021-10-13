@@ -1,5 +1,4 @@
 import cv2
-import numpy
 import numpy as np
 from PIL import Image
 import math
@@ -38,13 +37,11 @@ def center_image(image):
 
 
 if __name__ == "__main__":
-    path = r'64x64.jpg'
+    path = r'8x8.jpg'
     img = cv2.imread(path, 0)
     rows = img.shape[0]
     cols = img.shape[1]
 
-    # centered_image = center_image(img)
-    # ori_image = centered_image
     ori_image = img
 
     image = dft(ori_image, rows, cols)
@@ -54,6 +51,7 @@ if __name__ == "__main__":
     norm_image = pixel_normalization(image)
 
     im = Image.fromarray(norm_image)
+
     if im.mode != 'RGB':
         im = im.convert('RGB')
-    im.save("64x64result.jpg")
+    im.save("8x8result.jpg")
